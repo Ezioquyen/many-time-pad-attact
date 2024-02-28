@@ -1,5 +1,16 @@
 public class Process {
 
+     /*Su dung de hien thi ket qua cuoi cung
+    public static void outPut(String word, Integer cipherText) {
+        String cipherTarget = xorHexStrings(Data.cipherTexts[cipherText - 1], Data.target);
+        String wordHex = stringToHex(word);
+        String wordCipher;
+        System.out.println("Cipher: " + cipherText);
+        wordCipher = xorHexStrings(wordHex, cipherTarget);
+        System.out.println("  Word: \"" + hexToString(wordCipher)+"\"");
+        System.out.println("-----");
+    }*/
+
     public static void outPut(String word, Integer cipherText) {
         String cipherTarget = xorHexStrings(Data.cipherTexts[cipherText - 1], Data.target);
         String wordHex = stringToHex(word);
@@ -8,11 +19,10 @@ public class Process {
         System.out.println("Cipher: " + cipherText);
         while (wordHex.length() <= cipherTarget.length()) {
             wordCipher = xorHexStrings(wordHex, cipherTarget);
-            if (isHexInRange(wordCipher)) {
-                System.out.println("  Position: " + index);
+
+
                 System.out.println("  Word: \"" + hexToString(wordCipher)+"\"");
                 System.out.println(" ");
-            }
             index++;
             wordHex = "00" + wordHex;
         }
@@ -33,22 +43,6 @@ public class Process {
         }
 
         return hexString.toString();
-    }
-
-    private static boolean isHexInRange(String hexString) {
-
-        // Kiểm tra từng cặp ký tự trong chuỗi hexa
-        for (int i = 0; i < hexString.length(); i += 2) {
-            // Lấy từng cặp ký tự
-            String hexPair = hexString.substring(i, i + 2);
-            // Chuyển đổi từ cặp ký tự hexa thành giá trị số nguyên
-            int decimalValue = Integer.parseInt(hexPair, 16);
-            // Kiểm tra xem giá trị số nguyên có nằm trong khoảng từ 32 (0x20) đến 126 (0x7E) không
-            if (decimalValue < 32 || decimalValue > 126) {
-                return false;
-            }
-        }
-        return true;
     }
 
     private static String hexToString(String hexString) {
