@@ -44,7 +44,6 @@ public class Process {
             // Chuyển đổi từ cặp ký tự hexa thành giá trị số nguyên
             int decimalValue = Integer.parseInt(hexPair, 16);
             // Kiểm tra xem giá trị số nguyên có nằm trong khoảng từ 32 (0x20) đến 126 (0x7E) không
-            if(decimalValue==0) continue;
             if (decimalValue < 32 || decimalValue > 126) {
                 return false;
             }
